@@ -1,25 +1,15 @@
+---
+Author: Akhila G P
+Date: 2020-06-24
+---
+
 ## Introduction
 
-This assignment uses data from
-the <a href="http://archive.ics.uci.edu/ml/">UC Irvine Machine
-Learning Repository</a>, a popular repository for machine learning
-datasets. In particular, we will be using the "Individual household
-electric power consumption Data Set" which I have made available on
-the course web site:
+* <b>Description</b>: Measurements of electric power consumption in one household with a one-minute sampling rate over a period of almost 4 years. Different electrical quantities and some sub-metering values are available.
 
+The "Individual household electric power consumption Data Set" is used. The dataset can be downloaded from <a href="https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip">Electric power consumption</a> [20Mb]
 
-* <b>Dataset</b>: <a href="https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip">Electric power consumption</a> [20Mb]
-
-* <b>Description</b>: Measurements of electric power consumption in
-one household with a one-minute sampling rate over a period of almost
-4 years. Different electrical quantities and some sub-metering values
-are available.
-
-
-The following descriptions of the 9 variables in the dataset are taken
-from
-the <a href="https://archive.ics.uci.edu/ml/datasets/Individual+household+electric+power+consumption">UCI
-web site</a>:
+## Dataset description
 
 <ol>
 <li><b>Date</b>: Date in format dd/mm/yyyy </li>
@@ -35,80 +25,73 @@ web site</a>:
 
 ## Loading the data
 
+Data from the dates 2007-02-01 and 2007-02-02 only are used. 
 
+* Using fread() from data.table package is faster compared to other read methods. 
 
-
-
-When loading the dataset into R, please consider the following:
-
-* The dataset has 2,075,259 rows and 9 columns. First
-calculate a rough estimate of how much memory the dataset will require
-in memory before reading into R. Make sure your computer has enough
-memory (most modern computers should be fine).
-
-* We will only be using data from the dates 2007-02-01 and
-2007-02-02. One alternative is to read the data from just those dates
-rather than reading in the entire dataset and subsetting to those
-dates.
-
-* You may find it useful to convert the Date and Time variables to
-Date/Time classes in R using the `strptime()` and `as.Date()`
-functions.
-
-* Note that in this dataset missing values are coded as `?`.
-
+* as.Date() and as.POSIXct() are used to appropriately format the Date and DateTime columns respectively
 
 ## Making Plots
 
-Our overall goal here is simply to examine how household energy usage
-varies over a 2-day period in February, 2007. Your task is to
-reconstruct the following plots below, all of which were constructed
-using the base plotting system.
+The four plots are constructed using the base plotting system.
 
-First you will need to fork and clone the following GitHub repository:
-[https://github.com/rdpeng/ExData_Plotting1](https://github.com/rdpeng/ExData_Plotting1)
+* The plots are stored in PNG files with width of 480 pixels and height of 480 pixels.
 
+* The plots' source code is stored in the same name as the plot. eg: `plot1.R` generates the `plot1.png`
 
-For each plot you should
-
-* Construct the plot and save it to a PNG file with a width of 480
-pixels and a height of 480 pixels.
-
-* Name each of the plot files as `plot1.png`, `plot2.png`, etc.
-
-* Create a separate R code file (`plot1.R`, `plot2.R`, etc.) that
-constructs the corresponding plot, i.e. code in `plot1.R` constructs
-the `plot1.png` plot. Your code file **should include code for reading
-the data** so that the plot can be fully reproduced. You should also
-include the code that creates the PNG file.
-
-* Add the PNG file and R code file to your git repository
-
-When you are finished with the assignment, push your git repository to
-GitHub so that the GitHub version of your repository is up to
-date. There should be four PNG files and four R code files.
-
-
-The four plots that you will need to construct are shown below. 
-
+The construced plots are as below and **to reproduce the plots execute the corresponding R script**
 
 ### Plot 1
 
-
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
+```R
+with(f2, hist(Global_active_power, col = "red", xlab = "Global Active Power (kilowatts)", main = "Global Active Power"))
+```
+![plot1.png](plot1.png)
 
 
 ### Plot 2
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
+```R
+with(f2, plot(DateTime, Global_active_power, type='l', ylab = "Global Active Power (kilowatts)", xlab = ""))
+```
+![plot2.png](plot2.png)
 
 
 ### Plot 3
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
+```R
+with(f2, {
+    plot(DateTime, Sub_metering_1, type = 'l', ylab = "Energy sub metering", xlab = "")
+    points(DateTime, Sub_metering_2, type='l', col="red")
+    points(DateTime, Sub_metering_3, type='l', col="blue")
+})
+```
+![plot3.png](plot3.png)
 
 
 ### Plot 4
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
+```R
+with(f2,{
+    #plot 1
+    plot(DateTime, Global_active_power, type='l', ylab = "Global Active Power", xlab = "")
+    
+    #plot2
+    plot(DateTime, Voltage, type = 'l')
+    
+    #plot3
+    {
+    plot(DateTime, Sub_metering_1, type = 'l', ylab = "Energy sub metering", xlab = "")
+    points(DateTime, Sub_metering_2, type='l', col="red")
+    points(DateTime, Sub_metering_3, type='l', col="blue")
+    #setting the legend
+    legend("topright", col = c("black", "red", "blue"), c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"), lty = "solid", bty="n")
+    }
+    
+    #plot4
+    plot(DateTime, Global_reactive_power, type = 'l')
+})
+```R
+
+![plot4.png](plot4.png)
 
