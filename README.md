@@ -80,6 +80,7 @@ with(f2, {
 
 ```R
 #plot4.R
+par(mfrow=c(2,2))
 with(f2,{
     #plot 1
     plot(DateTime, Global_active_power, type='l', ylab = "Global Active Power", xlab = "")
