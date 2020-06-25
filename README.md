@@ -44,7 +44,8 @@ The construced plots are as below and **to reproduce the plots execute the corre
 ### Plot 1
 
 ```R
-with(f2, hist(Global_active_power, col = "red", xlab = "Global Active Power (kilowatts)", main = "Global Active Power"))
+with(f2, hist(Global_active_power, col = "red", xlab = "Global Active Power (kilowatts)",
+			main = "Global Active Power"))
 ```
 ![plot1.png](plot1.png)
 
@@ -52,7 +53,8 @@ with(f2, hist(Global_active_power, col = "red", xlab = "Global Active Power (kil
 ### Plot 2
 
 ```R
-with(f2, plot(DateTime, Global_active_power, type='l', ylab = "Global Active Power (kilowatts)", xlab = ""))
+with(f2, plot(DateTime, Global_active_power, type='l', 
+	ylab = "Global Active Power (kilowatts)", xlab = ""))
 ```
 ![plot2.png](plot2.png)
 
@@ -85,13 +87,14 @@ with(f2,{
     points(DateTime, Sub_metering_2, type='l', col="red")
     points(DateTime, Sub_metering_3, type='l', col="blue")
     #setting the legend
-    legend("topright", col = c("black", "red", "blue"), c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"), lty = "solid", bty="n")
+    legend("topright", col = c("black", "red", "blue"), 
+	c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"), lty = "solid", bty="n")
     }
     
     #plot4
     plot(DateTime, Global_reactive_power, type = 'l')
 })
-```R
+```
 
 ![plot4.png](plot4.png)
 
