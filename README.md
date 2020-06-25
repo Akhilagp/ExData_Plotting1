@@ -22,7 +22,7 @@ The "Individual household electric power consumption Data Set" is used. The data
 <li><b>Sub_metering_2</b>: energy sub-metering No. 2 (in watt-hour of active energy). It corresponds to the laundry room, containing a washing-machine, a tumble-drier, a refrigerator and a light. </li>
 <li><b>Sub_metering_3</b>: energy sub-metering No. 3 (in watt-hour of active energy). It corresponds to an electric water-heater and an air-conditioner.</li>
 
-<li><b>DateTime</b>: A column created for the purpose of plotting graphs; combines Date and Time column (format yyyy-mm-dd %H:%M:%S IST)
+<li><b>DateTime</b>: A column created for the purpose of plotting graphs; combines Date and Time column (format yyyy-mm-dd hh:mm:ss IST)
 </ol>
 
 ## Loading the data
