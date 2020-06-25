@@ -21,6 +21,8 @@ The "Individual household electric power consumption Data Set" is used. The data
 <li><b>Sub_metering_1</b>: energy sub-metering No. 1 (in watt-hour of active energy). It corresponds to the kitchen, containing mainly a dishwasher, an oven and a microwave (hot plates are not electric but gas powered). </li>
 <li><b>Sub_metering_2</b>: energy sub-metering No. 2 (in watt-hour of active energy). It corresponds to the laundry room, containing a washing-machine, a tumble-drier, a refrigerator and a light. </li>
 <li><b>Sub_metering_3</b>: energy sub-metering No. 3 (in watt-hour of active energy). It corresponds to an electric water-heater and an air-conditioner.</li>
+
+<li><b>DateTime</b>: A column created for the purpose of plotting graphs; combines Date and Time column (format yyyy-mm-dd %H:%M:%S IST)
 </ol>
 
 ## Loading the data
@@ -44,6 +46,7 @@ The construced plots are as below and **to reproduce the plots execute the corre
 ### Plot 1
 
 ```R
+#plot1.R
 with(f2, hist(Global_active_power, col = "red", xlab = "Global Active Power (kilowatts)",
 			main = "Global Active Power"))
 ```
@@ -53,6 +56,7 @@ with(f2, hist(Global_active_power, col = "red", xlab = "Global Active Power (kil
 ### Plot 2
 
 ```R
+#plot2.R
 with(f2, plot(DateTime, Global_active_power, type='l', 
 	ylab = "Global Active Power (kilowatts)", xlab = ""))
 ```
@@ -62,6 +66,7 @@ with(f2, plot(DateTime, Global_active_power, type='l',
 ### Plot 3
 
 ```R
+#plot3.R
 with(f2, {
     plot(DateTime, Sub_metering_1, type = 'l', ylab = "Energy sub metering", xlab = "")
     points(DateTime, Sub_metering_2, type='l', col="red")
@@ -74,6 +79,7 @@ with(f2, {
 ### Plot 4
 
 ```R
+#plot4.R
 with(f2,{
     #plot 1
     plot(DateTime, Global_active_power, type='l', ylab = "Global Active Power", xlab = "")
